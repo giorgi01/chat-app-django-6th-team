@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>საჩათაო აპლიკაცია</title>
+      {% include 'css.html' %}
+    <link
+      rel="icon"
+      href="https://i.imgur.com/PuZt3QO.png"
+      type="image/x-icon"
+    />
+    <style>
+      body {
+        background-image: url(https://d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/background.png?fbclid=IwAR0ekmMlq1DBNcIwbYrfNqSxbojiSVCkRcmRQFP8ZDTHQ_pHeKLAfVf1zPc);
+        background-size: 115%;
+      }
+      .container {
+        margin: 100px;
+        width: 200%;
+      }
+
+    </style>
+  </head>
+
+  <body class="container">
+  {% block content %}
+  {% endblock %}
+  </body>
+</html>
