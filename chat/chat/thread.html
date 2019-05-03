@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h3>მიმოწერა {% if user != object.first %}{{ object.first }}{% else %}{{ object.second }}{% endif %}-თან</h3>
+<ul id='chat-items'>
+{% for chat in object.chatmessage_set.all %}
+
+<li>{{ chat.user }}: {{ chat.message }}</li>
+
+{% endfor %}
+</ul>
+
+<form id='formData' method='POST'> {% csrf_token %}
+{{form.as_p }}
+<input type='submit' class='btn btn-primary'/>
+</form>
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+function pageloadEvery(t) {
+setTimeout('location.reload(true)', t);
+}
+
+pageloadEvery(5000)
+
+// websocket scripts
+// console.log(window.location)
+var loc = window.location
+var formData = $("#form")
+var msgInput =  $("#id_message")
+var chatHolder = $("#chat-items")
+
+var wsStart  = 'ws://'
+var endpoint = wsStart + loc.host + loc.pathname
+
+var socket = new WebSocket(endpoint)
+
+
+socket.onmessage = function(e){
+    console.log("message", e)
+    console.log("<li>" + message + "</li>");
+}
+socket.onopen = function(e){
+    console.log("open", e)
+    formData.submit(function (event) {
+        event.preventDefault()
+        var msgText = msgInput.val()
+        // var formDataSerialized = formData.serialize()
+        var finalData = {
+            'message': msgText
+        }
+
+        socket.send(JSON.stringify(finalData))
+        // msgInput.val('')
+        formData[0].reset()
+    })
+}
+socket.onerror = function(e){
+    console.log("error", e)
+}
+socket.onclose = function (e) {
+    console.log("close", e)
+}
+
+
+</script>
+{% endblock %}
