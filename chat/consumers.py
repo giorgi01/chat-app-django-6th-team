@@ -10,16 +10,19 @@ from .models import Thread, ChatMessage
 class ChatConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         print("Connected", event)
-        await self.send({
+        await
+        self.send({
             'type': 'websocket.accept'
         })
         other_user = self.scope['url_route']['kwargs']['username']
         me = self.scope['user']
         print(other_user, me)
-        thread_obj = await self.get_thread(me, other_user)
+        thread_obj = await
+        self.get_thread(me, other_user)
         print(thread_obj)
         # await asyncio.sleep(10)
-        await self.send({
+        await
+        self.send({
             'type': 'websocket.send',
             'text': 'Hello World'
         })
@@ -39,7 +42,8 @@ class ChatConsumer(AsyncConsumer):
                 'message': msg,
                 'username': username
             }
-            await self.send({
+            await
+            self.send({
                 'type': 'websocket.send',
                 'text': json.dumps(myResponse)
             }
