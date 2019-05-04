@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +37,8 @@
 
     /* based class */
     .people {
-        background-image: url("//d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/background-people.png");
-    = = = = = = = background-image: url("https://d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/background-people.png");
-    >>> >>> > 6 b53f448a3c7b93da28ecb2d3211176185229da3 background-size: cover cover;
+    background-image: url("https://d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/background-people.png");
+        background-size: cover cover;
         height: 100%;
         width: 795px;
         background-repeat: no-repeat;
@@ -51,7 +51,7 @@
     }
 
     .headphone {
-        background-image: url("//d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/headphone.png?fbclid=IwAR253y92JCPQp2QsOVAmyGqiM70U94Ex9faZelnKAR54Xc9YAGPuMX0101c");
+        background-image: url("https://d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/headphone.png?fbclid=IwAR253y92JCPQp2QsOVAmyGqiM70U94Ex9faZelnKAR54Xc9YAGPuMX0101c");
         background-size: cover cover;
         position: absolute;
         width: 24px;
@@ -65,7 +65,7 @@
     }
 
     .beard {
-        background-image: url("//d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/beard.png");
+        background-image: url("https://d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/beard.png");
         background-size: cover cover;
         position: absolute;
         width: 139px;
@@ -93,7 +93,7 @@
     }
 
     .cups {
-        background-image: url("//d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/cups.png");
+        background-image: url("https://d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/cups.png");
         background-size: cover cover;
         width: 135px;
         height: 67px;
@@ -143,7 +143,7 @@
     }
 
     .illus-background {
-        background-image: url("//d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/background.png");
+        background-image: url("https://d1eipm3vz40hy0.cloudfront.net/sites/zopim/images/p-home/background.png");
         background-size: cover cover;
         min-height: 713px;
         height: 713px;
@@ -191,17 +191,19 @@
         border-radius: 6px;
         font-size: 20px;
         margin-top: 20px;
+	margin-left: 47%;
         font: 19px/2 DNRB;
         color: white;
     }
 
 
-    .input {
+    .input-info {
         position: relative;
         display: block;
         height: 30px;
         width: 220px;
         margin-top: 10px;
+	    margin-left: 250px;
         padding: 13px 0 15px 8px;
         font: 20px/1 DNLTR;
         color: #333;
@@ -210,82 +212,60 @@
         box-shadow: none;
         z-index: 1;
         line-height: 24px;
+
     }
 </style>
 <body>
-<form name="add">
-    <div id="input-info">
-        <label>
-            <input type="text"
-                   name="user"
-                   placeholder="მომხმარებლის სახელი"
-            >
-        </label>
-        <div id="error-user"
-        >
-        </div>
-    </div>
-</form>
-
-<div>
-    <button id="check-open" onclick="search_user()">ძიება</button>
-    <a href="">
-        <button id="user1" hidden="hidden"></button>
-    </a>
-    <a href="">
-        <button id="user2" hidden="hidden"></button>
-    </a>
-</div>
-<script>
-    function search_user() {
-        let user = document.add.elements.user.value;
-        if (user === 'user1') {
-            document.getElementById('user1').click();
-        } else if (user === 'user2') {
-            document.getElementById('user2').click();
-        } else {
-            document.getElementById('error-user').innerText = 'მსგავსს არავის ვიცნობ'
-        }
-        console.log(user)
-    }
-</script>
-
 <div class="illus-background">
     <div class="photo-title container">
         <h1>Talk to your customers in real-time</h1>
         <h2>Live chat is the fastest way to engage your customers.</h2>
+        <form name="add">
+            <div align="center" id="input-info">
+                <label>
+                    <input 
+                    type="text"
+                           name="user"
+                           placeholder="მომხმარებლის სახელი"
+                    >
+                </label>
+                <div id="error-user"
+                >
+                </div>
+            </div>
+        </form>
+        
+        <div text-align="center">
+            <button id="check-open" onclick="search_user()">ძიება</button>
+            <a href="http://167.99.136.80:8000/messages/user1/">
+                <button id="user1" hidden="hidden"></button>
+            </a>
+            <a href="http://167.99.136.80:8000/messages/user2/">
+                <button id="user2" hidden="hidden"></button>
+            </a>
+            <a href="http://167.99.136.80:8000/messages/user3/">
+                <button id="user3" hidden="hidden"></button>
+            </a>
+        </div>
+        <script>
+            function search_user() {
+                let user = document.add.elements.user.value;
+                if (user === 'user1') {
+                    document.getElementById('user1').click();
+                } else if (user === 'user2') {
+                    document.getElementById('user2').click();
+                } else if (user === 'user3') {
+                    document.getElementById('user3').click();
+                } else {
+                    document.getElementById('error-user').innerText = 'მსგავსს არავის ვიცნობ'
+                }
+                console.log(user)
+            }
+        </script>
     </div>
 
-<<<<<<< HEAD
 
     <div class="people">
-=======
-        <div align="center">
-          <button id="check-open" onclick="search_user()">Start chat</button>
-          <a
-            href="http://167.99.136.80:8000/messages/user1/"
-            <!-- აქ
-            ჩასვი
-            პირველი
-            უსერის
-            ლინკი--
-          >
-            <button id="user1" hidden="hidden"></button>
-          </a>
-          <a
-            href="http://167.99.136.80:8000/messages/user2/"
-            <!--აქ
-            ჩასვი
-            მეორე
-            უსერის
-            ლინკი--
-          >
-            <button id="user2" hidden="hidden"></button>
-          </a>
-        </div>
-      </div>
-      <div class="people">
->>>>>>> ee7c38daf0807f23f7ee3bfa61122c4a582ce5e4
         <div class="headphone"></div>
         <div class="beard"></div>
         <div class="steam"></div>
